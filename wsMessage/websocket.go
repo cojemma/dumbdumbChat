@@ -1,9 +1,9 @@
 package wsMessage
 
 import (
+	"dumbdumbChat/chatAI"
+	"dumbdumbChat/model"
 	"fmt"
-	"live2dViewer/chatAI"
-	"live2dViewer/model"
 	"log"
 	"net/http"
 	"time"

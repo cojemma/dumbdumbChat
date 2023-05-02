@@ -1,7 +1,7 @@
 package live2drive
 
 import (
-	"live2dViewer/model"
+	"dumbdumbChat/model"
 )
 
 type Live2Driver interface {

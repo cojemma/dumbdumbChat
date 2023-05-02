@@ -1,4 +1,4 @@
-module live2dViewer
+module dumbdumbChat
 
 go 1.19
 

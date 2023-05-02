@@ -1,13 +1,13 @@
 package chatcore
 
 import (
+	"dumbdumbChat/chatAI"
+	live2drive "dumbdumbChat/live2Drive"
+	"dumbdumbChat/model"
+	"dumbdumbChat/tts"
+	"dumbdumbChat/wsMessage"
 	"encoding/json"
 	"fmt"
-	"live2dViewer/chatAI"
-	live2drive "live2dViewer/live2Drive"
-	"live2dViewer/model"
-	"live2dViewer/tts"
-	"live2dViewer/wsMessage"
 	"os"
 )
 

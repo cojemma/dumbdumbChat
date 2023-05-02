@@ -2,10 +2,10 @@ package chatAI
 
 import (
 	"bytes"
+	"dumbdumbChat/model"
 	"encoding/json"
 	"fmt"
 	"io"
-	"live2dViewer/model"
 	"net/http"
 )
 

@@ -1,7 +1,7 @@
 package chatAI
 
 import (
-	"live2dViewer/model"
+	"dumbdumbChat/model"
 	"testing"
 )
 

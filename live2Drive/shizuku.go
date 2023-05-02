@@ -1,8 +1,8 @@
 package live2drive
 
 import (
+	"dumbdumbChat/model"
 	"fmt"
-	"live2dViewer/model"
 )
 
 type shizukuExpression = string

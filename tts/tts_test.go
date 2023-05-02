@@ -1,7 +1,7 @@
 package tts
 
 import (
-	"live2dViewer/model"
+	"dumbdumbChat/model"
 	"testing"
 )
 

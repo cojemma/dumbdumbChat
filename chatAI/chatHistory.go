@@ -1,8 +1,8 @@
 package chatAI
 
 import (
+	"dumbdumbChat/model"
 	"encoding/json"
-	"live2dViewer/model"
 	"os"
 )
 

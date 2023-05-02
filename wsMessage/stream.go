@@ -1,9 +1,9 @@
 package wsMessage
 
 import (
+	"dumbdumbChat/model"
 	"encoding/json"
 	"fmt"
-	"live2dViewer/model"
 	"log"
 
 	"github.com/gorilla/websocket"

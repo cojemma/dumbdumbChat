@@ -1,12 +1,12 @@
 package main
 
 import (
+	chatcore "dumbdumbChat/chatCore"
+	"dumbdumbChat/model"
+	"dumbdumbChat/wsMessage"
 	"encoding/json"
 	"fmt"
 	"html/template"
-	chatcore "live2dViewer/chatCore"
-	"live2dViewer/model"
-	"live2dViewer/wsMessage"
 	"log"
 	"net/http"
 )
