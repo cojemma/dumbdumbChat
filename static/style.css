@@ -1,0 +1,103 @@
+#control {
+  position: absolute;
+  top: 8px;
+  left: 24px;
+  color: #fff;
+  font-size: 18px;
+}
+
+#canvas {
+  margin-right: 30%; /* width of #chatbox */  
+}
+
+#chatbox {
+  background: #fff;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 10px;
+  width: 30%;
+  height: 70%;
+  position: absolute;
+  top: 15px;
+  right: 15px;
+}
+
+#chat {
+  overflow-y: scroll;
+  height: 90%;
+}
+
+#message, 
+#send {
+  position: absolute;
+  bottom: 5px; 
+}
+
+#message {
+  width: 70%;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 10px;
+  left: 10px; 
+}
+
+#send {
+  width: 20%;
+  background: #3399ff;
+  border: 1px solid #3366ff;
+  border-radius: 5px;
+  color: #fff;
+  padding: 10px 0;
+  right: 10px;
+}  
+
+#chatbox p {
+  background: #eee; 
+  border-radius: 5px;
+  padding: 10px; 
+  margin-bottom: 5px;
+}
+
+#chatbox p.user {
+  background: #3399ff;
+  color: #fff;
+  width: 70%; 
+  float: right;
+}
+
+#chatbox p.assistant {
+  background: #ecafaf; 
+  width: 70%;
+  float: left;
+}
+
+.setKey-container {
+  width: 500px;
+  margin: 2rem auto;
+  border: 1px solid #ddd;
+  padding: 2rem; 
+}
+
+.form-group {
+  margin-bottom: 1rem;
+}
+
+label {
+  display: block;
+  margin-bottom: 0.25rem; 
+}
+
+input, select {
+  width: 100%;
+  padding: 0.5rem;
+  border-radius: 0.3rem;
+  border: 1px solid #ddd;
+}
+
+button {
+  background: #007aff;
+  color: #fff;
+  padding: 1rem; 
+  border: none;
+  border-radius: 0.3rem;
+}

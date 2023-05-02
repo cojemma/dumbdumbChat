@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>CodePen - pixi-live2d-display </title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+<link rel="stylesheet" href="/static/style.css">
+
+</head>
+<body>
+<!-- partial:index.partial.html -->
+<script src="https://cubism.live2d.com/sdk-web/cubismcore/live2dcubismcore.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/dylanNew/live2d/webgl/Live2D/lib/live2d.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/pixi.js@6.5.2/dist/browser/pixi.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/pixi-live2d-display/dist/index.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/pixi-live2d-display/dist/extra.min.js"></script>
+<script src="https://unpkg.com/axios@1.1.2/dist/axios.min.js"></script>
+
+
+
+  <canvas id=canvas>
+
+  </canvas>
+
+  <div id="chatbox">
+    <div id="chat"></div>
+    <input id="message" type="text" placeholder="輸入訊息...">
+    <button id="send">Send</button>
+  </div> 
+
+<div id="control">
+  <div class="setKey-container">
+    <h1>Set Key</h1>
+    <form onsubmit="sendKeySet(event)">
+        <div class="form-group">
+            <label for="chatKey">OpenAI Key</label> 
+            <input type="text" id="chatKey" value="{{.ChatKey}}">
+        </div>
+        <div class="form-group">
+            <label for="ttsKey">azure TTS Key</label>
+            <input type="text" id="ttsKey" value="{{.TTSKey}}">
+        </div>
+        <div class="form-group">
+            <label for="ttsRegion">azure TTS Region</label>
+            <select name="ttsRegion" id="ttsRegion">
+              <option value="japanwest" {{if eq .TTSRegion "japanwest"}}selected{{end}}>japanwest</option>
+              <option value="eastasia" {{if eq .TTSRegion "eastasia"}}selected{{end}}>eastasia</option>  
+              <option value="eastus" {{if eq .TTSRegion "eastus"}}selected{{end}}>eastus</option>
+            </select>
+        </div>
+        <button type="submit">Submit</button>
+    </form>
+  </div>
+  <!-- <form onsubmit="sendKeySet(event)">
+    <input type="text" id="chatKey">
+    <input type="text" id="ttsKey">
+    <input type="text" id="ttsRegion">
+    <button type="submit">Submit</button>
+  </form> -->
+
+  <div id="motionControl">
+    <p>motions</p>
+    <button value="idle" onclick="setMotion(this.value, 3)" class="motionControl">idle</button>
+    <button value="tap_body" onclick="setMotion(this.value, 3)" class="motionControl">tap_body</button>
+    <button value="pinch_in" onclick="setMotion(this.value, 3)" class="motionControl">pinch_in</button>
+    <button value="pinch_out" onclick="setMotion(this.value, 3)" class="motionControl">pinch_out</button>
+    <button value="shake" onclick="setMotion(this.value, 3)" class="motionControl">shake</button>
+    <button value="flick_head" onclick="setMotion(this.value, 3)" class="motionControl">flick_head</button>
+  </div>
+
+  <div id="expressionControl">
+    <p>expression</p>
+    <button value="f01" onclick="setExpression(this.value, 3)" class="expressionControl">f01</button>
+    <button value="f02" onclick="setExpression(this.value, 3)" class="expressionControl">f02</button>
+    <button value="f03" onclick="setExpression(this.value, 3)" class="expressionControl">f03</button>
+    <button value="f04" onclick="setExpression(this.value, 3)" class="expressionControl">f04</button>
+  </div>
+</div>
+
+
+
+  <script  src="/static/live2dModel.js"></script>
+  <script  src="/static/chat.js"></script>
+  <script  src="/static/getValue.js"></script>
+</body>
+</html>

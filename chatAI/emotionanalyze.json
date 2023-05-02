@@ -1,0 +1,6 @@
+[
+    {
+        "role":"system",    
+        "content":"Please analyze the emotion of the last assistant's talk, only give me the json format emotion, include happiness, sadness, anger, fear, surprise and disgust six emotions. Score it from 1 to 10. like this format: {\"happiness\":6,\"sadness\":1,\"anger\":2,\"fear\":1,\"surprise\":7,\"disgust\":3}"
+    }
+]

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Scrolling Message Frame</title>
+	<style>
+		body {
+			margin: 0;
+			padding: 0;
+			background-color: #000;
+			color: #fff;
+			font-size: 20px;
+			font-family: Arial, sans-serif;
+		}
+		
+		.container {
+			position: relative;
+			height: 50px;
+			overflow: hidden;
+			border: 1px solid #fff;
+			padding: 10px;
+		}
+		
+		.message {
+			position: absolute;
+			top: 0;
+			left: 0;
+			animation: scroll 10s linear infinite;
+		}
+		
+		@keyframes scroll {
+			from {top: 0;}
+			to {top: -100%;}
+		}
+	</style>
+</head>
+<body>
+	<div class="container">
+		<div class="message">
+			This is a scrolling message frame!
+		</div>
+	</div>
+
+<script>
+	var message = document.querySelector('.message');
+	var container = document.querySelector('.container');
+	
+	container.addEventListener('mouseover', function() {
+	  message.style.animationPlayState = 'paused';
+	});
+	
+	container.addEventListener('mouseout', function() {
+	  message.style.animationPlayState = 'running';
+	});
+</script>
+
+</body>
+</html>
