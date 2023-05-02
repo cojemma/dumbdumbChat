@@ -1,5 +1,5 @@
 # dumbdumbChat
-AIVtuber是一個使用chatGPT作為語言模型,搭配azure提供的語音生成技術以及live2d模型驅動的虛擬youtuber。
+dumbdumbChat是一個使用chatGPT作為語言模型,搭配azure提供的語音生成技術以及live2d模型驅動的虛擬youtuber。
 ## 安裝方法
 AIVtuber需要以下的環境與API: 
 - OpenAI API Key: 至少一個OpenAI的API Key以使用GPT-3模型。  
