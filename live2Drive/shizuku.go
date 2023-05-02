@@ -8,18 +8,18 @@ import (
 type shizukuExpression = string
 
 const (
-	shizukuExpressionShy     shizukuExpression = "f01"
-	shizukuExpressionUnhappy shizukuExpression = "f02"
-	shizukuExpressionAnger   shizukuExpression = "f03"
-	shizukuExpressionSmile   shizukuExpression = "f04"
+	shizukuExpressionSmile    shizukuExpression = "f01"
+	shizukuExpressionUnhappy  shizukuExpression = "f02"
+	shizukuExpressionAnger    shizukuExpression = "f03"
+	shizukuExpressionSurprise shizukuExpression = "f04"
 )
 
 var shizukuExpressionMap = map[model.Emotion]shizukuExpression{
-	model.Happiness: shizukuExpressionSmile,
+	model.Happiness: shizukuExpressionSurprise,
 	model.Sadness:   shizukuExpressionUnhappy,
 	model.Anger:     shizukuExpressionAnger,
 	model.Fear:      shizukuExpressionUnhappy,
-	model.Surprise:  shizukuExpressionSmile,
+	model.Surprise:  shizukuExpressionSurprise,
 	model.Disgust:   shizukuExpressionUnhappy,
 }
 
@@ -27,16 +27,16 @@ type shizukuMotion = string
 
 const (
 	shizukuMotionIdle      shizukuMotion = "idle"
-	shizukuMotionEnergetic shizukuMotion = "tap_body"
+	shizukuMotionTapBody   shizukuMotion = "tap_body"
 	shizukuMotionPinchIn   shizukuMotion = "pinch_in"
 	shizukuMotionPinchOut  shizukuMotion = "pinch_out"
-	shizukuMotionShock     shizukuMotion = "shake"
-	shizukuMotionChat      shizukuMotion = "flick_head"
+	shizukuMotionShake     shizukuMotion = "shake"
+	shizukuMotionFlickHead shizukuMotion = "flick_head"
 )
 
 var shizukuMotionMap = map[model.Emotion]shizukuMotion{
-	model.Happiness: shizukuMotionEnergetic,
-	model.Sadness:   shizukuMotionShock,
+	model.Happiness: shizukuMotionTapBody,
+	model.Sadness:   shizukuMotionShake,
 	model.Anger:     shizukuMotionPinchOut,
 	model.Fear:      shizukuMotionPinchIn,
 	model.Surprise:  shizukuMotionPinchIn,
