@@ -2,6 +2,7 @@ package chatcore
 
 import (
 	"encoding/json"
+	"fmt"
 	"live2dViewer/chatAI"
 	live2drive "live2dViewer/live2Drive"
 	"live2dViewer/model"
@@ -18,11 +19,12 @@ func init() {
 }
 
 func ChatCore() {
-	// defer func() {
-	// 	if r := recover(); r != nil {
-	// 		fmt.Println(r)
-	// 	}
-	// }()
+	defer func() {
+		if r := recover(); r != nil {
+			fmt.Println(r)
+			ChatCore()
+		}
+	}()
 	live2dModel := live2drive.Shizuku{}
 
 	userMessageC := make(chan string)

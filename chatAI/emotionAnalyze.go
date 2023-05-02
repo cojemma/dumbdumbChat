@@ -14,11 +14,11 @@ func emotionAnalysis(messages []model.ChatMessage) map[model.Emotion]int {
 	analyzePrompts := getAnalyzePrompt()
 	analyzePrompts = append(messages, analyzePrompts...)
 	aiResp := sendToChatAI(analyzePrompts)
-	analyzeResult := aiResp.Choices[0].Message.Content
-
 	emotion := model.ConvertEmotionStruct(model.EmotionStatus{})
-
-	json.Unmarshal([]byte(analyzeResult), &emotion)
+	if len(aiResp.Choices) > 0 {
+		analyzeResult := aiResp.Choices[0].Message.Content
+		json.Unmarshal([]byte(analyzeResult), &emotion)
+	}
 
 	return emotion
 }

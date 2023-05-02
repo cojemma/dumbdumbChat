@@ -14,6 +14,10 @@ const (
 	outputMP3 = "./static/audio/output.mp3"
 )
 
+func init() {
+	os.Mkdir("./static/audio/", 0755)
+}
+
 var (
 	speechKey    = ""
 	speechRegion = ""
@@ -65,10 +69,14 @@ func TexttoSpeech(text string, emo map[model.Emotion]int) string {
 		log.Fatal(err)
 	}
 
-	err = os.WriteFile(outputMP3, body, 0644)
-	if err != nil {
-		log.Fatal(err)
-	}
+	mp3, _ := os.Create(outputMP3)
+	defer mp3.Close()
+
+	mp3.Write(body)
+	// err = os.WriteFile(outputMP3, body, 0644)
+	// if err != nil {
+	// 	log.Fatal(err)
+	// }
 
 	return outputMP3
 }
