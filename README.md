@@ -1,7 +1,5 @@
-# AIVtuber
+# dumbdumbChat
 AIVtuber是一個使用chatGPT作為語言模型,搭配azure提供的語音生成技術以及live2d模型驅動的虛擬youtuber。
-## 簡介
-AIVtuber運用OpenAI的GPT-3語言模型與微軟Azure的語音合成技術,使一個虛擬的2D角色模型可以自然地與使用者進行語音對話。
 ## 安裝方法
 AIVtuber需要以下的環境與API: 
 - OpenAI API Key: 至少一個OpenAI的API Key以使用GPT-3模型。  
