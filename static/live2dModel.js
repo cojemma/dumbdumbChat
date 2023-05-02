@@ -29,7 +29,6 @@ var haru;
     model.y = innerHeight * 0.1;
 
     draggable(model);
-    addFrame(model);
     addHitAreaFrames(model);
   });
   
