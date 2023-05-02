@@ -4,9 +4,10 @@ AIVtuber是一個使用chatGPT作為語言模型,搭配azure提供的語音生�
 AIVtuber運用OpenAI的GPT-3語言模型與微軟Azure的語音合成技術,使一個虛擬的2D角色模型可以自然地與使用者進行語音對話。
 ## 安裝方法
 AIVtuber需要以下的環境與API: 
-- OpenAI API Key: 至少一個OpenAI的API Key以使用GPT-3模型。`https://platform.openai.com/account/api-keys` 
+- OpenAI API Key: 至少一個OpenAI的API Key以使用GPT-3模型。  
+<https://platform.openai.com/account/api-keys> 
 - Azure 語音生成資源: 如果需要語音生成功能需要在Azure上申請語音合成的訂閱。
-`https://speech.microsoft.com/portal/voicegallery`
+<https://speech.microsoft.com/portal/voicegallery>
 ## 使用方法  
 1. 啟動aiVtuber.exe後,網頁服務將在`http://localhost:8001/` 
 2. 於網頁上填入OpenAI API Key以及Azure語音訂閱的相關資訊。  
