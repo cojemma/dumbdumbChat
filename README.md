@@ -10,6 +10,7 @@ AIVtuber需要以下的環境與API:
 1. 啟動aiVtuber.exe後,網頁服務將在`http://localhost:8001/` 
 2. 於網頁上填入OpenAI API Key以及Azure語音訂閱的相關資訊。  
 3. 即可開始與AIVtuber進行語音對話!
+4.如果要修改給ChatGPT的角色設定與對話，位於.chatAI/chathistory.json。
 ## 檔案結構
 chatAI - chatGpt request, chat history saved   
 live2Drive - use emotion struct to drive live2D model   
