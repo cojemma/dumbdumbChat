@@ -6,6 +6,10 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
 <link rel="stylesheet" href="/static/style.css">
 
+<script>var cubism2Model =
+  "https://cdn.jsdelivr.net/gh/guansss/pixi-live2d-display/test/assets/shizuku/shizuku.model.json";</script>
+
+
 </head>
 <body>
 <!-- partial:index.partial.html -->
@@ -75,9 +79,9 @@
     <button value="f03" onclick="setExpression(this.value, 3)" class="expressionControl">f03</button>
     <button value="f04" onclick="setExpression(this.value, 3)" class="expressionControl">f04</button>
   </div>
+
+  <button onclick="changeModel()">changeModel</button>
 </div>
-
-
 
   <script  src="/static/live2dModel.js"></script>
   <script  src="/static/chat.js"></script>
