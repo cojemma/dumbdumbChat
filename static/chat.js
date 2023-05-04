@@ -6,7 +6,8 @@ function receiveChatMessage(msg, role) {
   var newP = document.createElement("p");
   newP.innerHTML = msg;
   newP.className = role
-  chatBox.appendChild(newP);  
+  chatBox.appendChild(newP);
+  chatBox.scrollTop = chatBox.scrollHeight;
 }
 
 document.getElementById("send").onclick = function() {
@@ -19,4 +20,5 @@ document.getElementById("send").onclick = function() {
   chatBox.appendChild(newP);  
 
   document.getElementById("message").value = "";
+  chatBox.scrollTop = chatBox.scrollHeight;
 }

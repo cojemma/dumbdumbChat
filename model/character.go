@@ -51,3 +51,7 @@ type EmotionStatus struct {
 	Surprise  int `json:"surprise"`
 	Disgust   int `json:"disgust"`
 }
+
+type Live2dCharacterConfig struct {
+	ModelFile string `json:"modelFile"`
+}

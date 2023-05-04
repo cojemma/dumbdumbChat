@@ -1,56 +1,50 @@
-const cubism2Model =
-"https://cdn.jsdelivr.net/gh/guansss/pixi-live2d-display/test/assets/shizuku/shizuku.model.json";
 const cubism4Model =
 "https://cdn.jsdelivr.net/gh/guansss/pixi-live2d-display/test/assets/haru/haru_greeter_t03.model3.json";
 
 const live2d = PIXI.live2d;
-var shizuku;
-var haru;
+var live2dModel;
 
-(async function main() {
-  const app = new PIXI.Application({
-    view: document.getElementById("canvas"),
-    autoStart: true,
-    resizeTo: window,
-    backgroundColor: 0x333333 });
+const app = new PIXI.Application({
+  view: document.getElementById("canvas"),
+  autoStart: true,
+  resizeTo: window,
+  backgroundColor: 0x333333 });
 
-  const models = await Promise.all([
-    live2d.Live2DModel.from(cubism2Model)]);
+function loadLive2d() {
+  (async function main() {
+    app.stage.removeChild(live2dModel);
+    live2dModel = await live2d.Live2DModel.from(cubism2Model);
 
-  models.forEach(model => {
-    app.stage.addChild(model);
+    app.stage.addChild(live2dModel);
 
-    const scaleX = innerWidth * 0.4 / model.width;
-    const scaleY = innerHeight * 0.8 / model.height;
+    const scaleX = innerWidth * 0.4 / live2dModel.width;
+    const scaleY = innerHeight * 0.8 / live2dModel.height;
 
     // fit the window
-    model.scale.set(Math.min(scaleX, scaleY));
+    live2dModel.scale.set(Math.min(scaleX, scaleY));
 
-    model.y = innerHeight * 0.1;
+    live2dModel.y = innerHeight * 0.1;
 
-    draggable(model);
-    addHitAreaFrames(model);
-  });
-  
-  addModelControl();
+    draggable(live2dModel);
+    addHitAreaFrames(live2dModel);
+    
+    addModelControl();
 
-  const model2 = models[0];
-  shizuku = models[0];
+    live2dModel.x = (innerWidth - live2dModel.width) / 2;
 
-  model2.x = (innerWidth - model2.width) / 2;
+    // handle tapping
 
-  // handle tapping
+    live2dModel.on("hit", hitAreas => {
+      if (hitAreas.includes("body")) {
+        live2dModel.motion("tap_body");
+      }
 
-  model2.on("hit", hitAreas => {
-    if (hitAreas.includes("body")) {
-      model2.motion("tap_body");
-    }
-
-    if (hitAreas.includes("head")) {
-      model2.expression();
-    }
-  });
-})();
+      if (hitAreas.includes("head")) {
+        live2dModel.expression();
+      }
+    });
+  })();
+};
 
 function draggable(model) {
   model.buttonMode = true;
@@ -123,10 +117,17 @@ function checkbox(name, onChange) {
 
 function setMotion(move, level) {
   console.log("set motion:", move)
-  shizuku.motion(move, undefined, level);
+  live2dModel.motion(move, undefined, level);
 }
 
 function setExpression(expr, level) {
   console.log("set expression:", expr)
-  shizuku.expression(expr, undefined, level);
+  live2dModel.expression(expr, undefined, level);
 }
+
+function changeModel() {
+  cubism2Model = "/static/live2d/mao_pro/mao_pro_t02.model3.json";
+  loadLive2d();
+}
+
+loadLive2d();
