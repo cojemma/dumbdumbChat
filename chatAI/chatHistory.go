@@ -6,17 +6,20 @@ import (
 	"os"
 )
 
+var chatHistoryFile = "./chatAI/chathistory.json"
+
 func recordChatHistory(chatMessages []model.ChatMessage) {
-	file, _ := os.Create("./chatAI/chathistory.json")
+	file, _ := os.Create(chatHistoryFile)
 	defer file.Close()
 
-	file.Seek(0, 0) // 將檔案指標移至開頭
+	file.Seek(0, 0)
 	encoder := json.NewEncoder(file)
+	encoder.SetIndent("", "\t")
 	encoder.Encode(chatMessages)
 }
 
 func GetChatHistory() []model.ChatMessage {
-	file, _ := os.Open("./chatAI/chathistory.json")
+	file, _ := os.Open(chatHistoryFile)
 	defer file.Close()
 
 	chatHistory := []model.ChatMessage{}

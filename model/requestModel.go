@@ -16,3 +16,8 @@ type SetKeyRequest struct {
 	TTSKey    string `json:"ttsKey"`
 	TTSRegion string `json:"ttsRegion"`
 }
+
+type HtmlRenderer struct {
+	SetKey          SetKeyRequest
+	Live2dModelList map[string]string
+}

@@ -126,7 +126,8 @@ function setExpression(expr, level) {
 }
 
 function changeModel() {
-  cubism2Model = "/static/live2d/mao_pro/mao_pro_t02.model3.json";
+  let modelResource = document.getElementById("selectModel").value;
+  cubism2Model = modelResource;
   loadLive2d();
 }
 

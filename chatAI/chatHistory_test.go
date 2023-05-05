@@ -2,10 +2,13 @@ package chatAI
 
 import (
 	"dumbdumbChat/model"
+	"fmt"
 	"testing"
 )
 
 func Test_getChatHistory(t *testing.T) {
+	chatHistoryFile = "./chathistory.json"
+
 	tests := []struct {
 		name string
 		want []model.ChatMessage
@@ -18,7 +21,7 @@ func Test_getChatHistory(t *testing.T) {
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			GetChatHistory()
+			fmt.Println(GetChatHistory())
 		})
 	}
 }

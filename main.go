@@ -2,6 +2,7 @@ package main
 
 import (
 	chatcore "dumbdumbChat/chatCore"
+	live2drive "dumbdumbChat/live2Drive"
 	"dumbdumbChat/model"
 	"dumbdumbChat/wsMessage"
 	"encoding/json"
@@ -23,7 +24,13 @@ func serveHome(w http.ResponseWriter, r *http.Request) {
 	}
 	tmpl, _ := template.ParseFiles("./index.html")
 	keyData := chatcore.GetKey()
-	tmpl.Execute(w, keyData)
+	allModel := live2drive.ListAllModel()
+
+	htmlRenderer := model.HtmlRenderer{
+		SetKey:          keyData,
+		Live2dModelList: allModel,
+	}
+	tmpl.Execute(w, htmlRenderer)
 }
 
 func setKey(w http.ResponseWriter, r *http.Request) {
