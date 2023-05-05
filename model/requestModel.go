@@ -20,4 +20,5 @@ type SetKeyRequest struct {
 type HtmlRenderer struct {
 	SetKey          SetKeyRequest
 	Live2dModelList map[string]string
+	ChatHistory     []ChatMessage
 }

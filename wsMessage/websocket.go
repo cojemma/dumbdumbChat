@@ -1,8 +1,6 @@
 package wsMessage
 
 import (
-	"dumbdumbChat/chatAI"
-	"dumbdumbChat/model"
 	"fmt"
 	"log"
 	"net/http"
@@ -31,15 +29,4 @@ func UpgradeConnection(w http.ResponseWriter, r *http.Request) {
 
 	connectedWS = append(connectedWS, conn)
 	go receiveMessage(conn)
-	go loadChatHistory()
-}
-
-func loadChatHistory() {
-	chatHistory := chatAI.GetChatHistory()
-
-	for _, chat := range chatHistory {
-		if chat.Role != "system" {
-			SendMessage(model.Chat, chat)
-		}
-	}
 }

@@ -1,6 +1,7 @@
 package main
 
 import (
+	"dumbdumbChat/chatAI"
 	chatcore "dumbdumbChat/chatCore"
 	live2drive "dumbdumbChat/live2Drive"
 	"dumbdumbChat/model"
@@ -25,10 +26,18 @@ func serveHome(w http.ResponseWriter, r *http.Request) {
 	tmpl, _ := template.ParseFiles("./index.html")
 	keyData := chatcore.GetKey()
 	allModel := live2drive.ListAllModel()
+	chatHistory := chatAI.GetChatHistory()
+	chatMessageHistory := []model.ChatMessage{}
+	for _, chat := range chatHistory {
+		if chat.Role != "system" {
+			chatMessageHistory = append(chatMessageHistory, chat)
+		}
+	}
 
 	htmlRenderer := model.HtmlRenderer{
 		SetKey:          keyData,
 		Live2dModelList: allModel,
+		ChatHistory:     chatMessageHistory,
 	}
 	tmpl.Execute(w, htmlRenderer)
 }

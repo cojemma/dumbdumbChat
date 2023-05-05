@@ -27,7 +27,11 @@
   </canvas>
 
   <div id="chatbox">
-    <div id="chat"></div>
+    <div id="chat">
+      {{range $i, $m := .ChatHistory}}
+        <p class={{$m.Role}}>{{$m.Content}}</p> 
+      {{end}}
+    </div>
     <input id="message" type="text" placeholder="輸入訊息...">
     <button id="send">Send</button>
   </div> 
