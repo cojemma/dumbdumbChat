@@ -38,18 +38,18 @@
     <form onsubmit="sendKeySet(event)">
         <div class="form-group">
             <label for="chatKey">OpenAI Key</label> 
-            <input type="text" id="chatKey" value="{{.ChatKey}}">
+            <input type="text" id="chatKey" value="{{.SetKey.ChatKey}}">
         </div>
         <div class="form-group">
             <label for="ttsKey">azure TTS Key</label>
-            <input type="text" id="ttsKey" value="{{.TTSKey}}">
+            <input type="text" id="ttsKey" value="{{.SetKey.TTSKey}}">
         </div>
         <div class="form-group">
             <label for="ttsRegion">azure TTS Region</label>
             <select name="ttsRegion" id="ttsRegion">
-              <option value="japanwest" {{if eq .TTSRegion "japanwest"}}selected{{end}}>japanwest</option>
-              <option value="eastasia" {{if eq .TTSRegion "eastasia"}}selected{{end}}>eastasia</option>  
-              <option value="eastus" {{if eq .TTSRegion "eastus"}}selected{{end}}>eastus</option>
+              <option value="japanwest" {{if eq .SetKey.TTSRegion "japanwest"}}selected{{end}}>japanwest</option>
+              <option value="eastasia" {{if eq .SetKey.TTSRegion "eastasia"}}selected{{end}}>eastasia</option>  
+              <option value="eastus" {{if eq .SetKey.TTSRegion "eastus"}}selected{{end}}>eastus</option>
             </select>
         </div>
         <button type="submit">Submit</button>
@@ -80,6 +80,12 @@
     <button value="f04" onclick="setExpression(this.value, 3)" class="expressionControl">f04</button>
   </div>
 
+  <select id="selectModel">
+    {{range $k, $v := .Live2dModelList}}
+        <option value="{{$v}}">{{$k}}</option>
+    {{end}}
+    <option value="https://cdn.jsdelivr.net/gh/guansss/pixi-live2d-display/test/assets/shizuku/shizuku.model.json">shizuku</option>
+  </select>
   <button onclick="changeModel()">changeModel</button>
 </div>
 

@@ -53,5 +53,8 @@ type EmotionStatus struct {
 }
 
 type Live2dCharacterConfig struct {
-	ModelFile string `json:"modelFile"`
+	ModelFile     string        `json:"modelFile"`
+	EmotionDriver EmotionDriver `json:"emotionDriver"`
 }
+
+type EmotionDriver = map[Emotion]ModelDriver

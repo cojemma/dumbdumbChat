@@ -11,7 +11,10 @@ import (
 	"os"
 )
 
-var keyFile = "./key.json"
+var (
+	keyFile                            = "./key.json"
+	live2dModel live2drive.Live2Driver = &live2drive.Shizuku{}
+)
 
 func init() {
 	keys := GetKey()
@@ -25,7 +28,6 @@ func ChatCore() {
 			ChatCore()
 		}
 	}()
-	live2dModel := live2drive.Shizuku{}
 
 	userMessageC := make(chan string)
 	wsMessage.RegisterReceiveStream(userMessageC)
@@ -62,6 +64,7 @@ func saveKey(setKeyReq model.SetKeyRequest) {
 
 	file.Seek(0, 0) // 將檔案指標移至開頭
 	encoder := json.NewEncoder(file)
+	encoder.SetIndent("", "\t")
 	encoder.Encode(setKeyReq)
 }
 

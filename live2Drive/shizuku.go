@@ -14,15 +14,6 @@ const (
 	shizukuExpressionSurprise shizukuExpression = "f04"
 )
 
-var shizukuExpressionMap = map[model.Emotion]shizukuExpression{
-	model.Happiness: shizukuExpressionSurprise,
-	model.Sadness:   shizukuExpressionUnhappy,
-	model.Anger:     shizukuExpressionAnger,
-	model.Fear:      shizukuExpressionUnhappy,
-	model.Surprise:  shizukuExpressionSurprise,
-	model.Disgust:   shizukuExpressionUnhappy,
-}
-
 type shizukuMotion = string
 
 const (
@@ -34,17 +25,18 @@ const (
 	shizukuMotionFlickHead shizukuMotion = "flick_head"
 )
 
-var shizukuMotionMap = map[model.Emotion]shizukuMotion{
-	model.Happiness: shizukuMotionTapBody,
-	model.Sadness:   shizukuMotionShake,
-	model.Anger:     shizukuMotionPinchOut,
-	model.Fear:      shizukuMotionPinchIn,
-	model.Surprise:  shizukuMotionPinchIn,
-	model.Disgust:   shizukuMotionPinchOut,
+var shizukuDriver = model.EmotionDriver{
+	model.Happiness: {Motion: shizukuMotionTapBody, Expresion: shizukuExpressionSurprise},
+	model.Sadness:   {Motion: shizukuMotionShake, Expresion: shizukuExpressionUnhappy},
+	model.Anger:     {Motion: shizukuMotionPinchOut, Expresion: shizukuExpressionAnger},
+	model.Fear:      {Motion: shizukuMotionPinchIn, Expresion: shizukuExpressionUnhappy},
+	model.Surprise:  {Motion: shizukuMotionPinchIn, Expresion: shizukuExpressionSurprise},
+	model.Disgust:   {Motion: shizukuMotionPinchOut, Expresion: shizukuExpressionUnhappy},
 }
 
 type Shizuku struct {
-	lastStatus map[model.Emotion]int
+	EmotionDriver model.EmotionDriver
+	lastStatus    map[model.Emotion]int
 }
 
 func (char *Shizuku) GetDriverbyEmotion(emotion map[model.Emotion]int) model.ModelDriver {
@@ -55,10 +47,7 @@ func (char *Shizuku) GetDriverbyEmotion(emotion map[model.Emotion]int) model.Mod
 		topEmo = topEmos[0]
 	}
 
-	driver := model.ModelDriver{
-		Motion:    shizukuMotionMap[topEmo],
-		Expresion: shizukuExpressionMap[topEmo],
-	}
+	driver := shizukuDriver[topEmo]
 
 	fmt.Println(emotion, topEmo)
 	if emotion[topEmo] <= 5 {
@@ -66,4 +55,8 @@ func (char *Shizuku) GetDriverbyEmotion(emotion map[model.Emotion]int) model.Mod
 	}
 
 	return driver
+}
+
+func (char *Shizuku) SetEmotionDriver(emotionDriver model.EmotionDriver) {
+	char.EmotionDriver = emotionDriver
 }
