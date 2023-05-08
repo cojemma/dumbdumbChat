@@ -1,12 +1,16 @@
 package live2drive
 
 import (
+	"dumbdumbChat/model"
+	"encoding/json"
 	"os"
 	"path/filepath"
 	"strings"
 )
 
-var live2dModelFile = "./static/live2d/"
+var (
+	live2dModelFile = "./static/live2d/"
+)
 
 func ListAllModel() map[string]string {
 	modelDirs, _ := filepath.Glob(live2dModelFile + "*")
@@ -24,4 +28,23 @@ func ListAllModel() map[string]string {
 	}
 
 	return allModel
+}
+
+func SaveModelConfig(config model.Live2dCharacterConfig) {
+	filePath := live2dModelFile + config.ModelName + "/live2dConfig.json"
+	file, _ := os.Create(filePath)
+	encoder := json.NewEncoder(file)
+	encoder.SetIndent("", "\t")
+	encoder.Encode(config)
+}
+
+func LoadModelConfig(modelName string) model.Live2dCharacterConfig {
+	filePath := live2dModelFile + modelName + "/live2dConfig.json"
+	file, _ := os.Open(filePath)
+	config := model.Live2dCharacterConfig{}
+
+	encoder := json.NewDecoder(file)
+	encoder.Decode(&config)
+
+	return config
 }

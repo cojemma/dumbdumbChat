@@ -1,0 +1,29 @@
+{
+	"modelFile": "shizuku",
+	"emotionDriver": {
+		"anger": {
+			"motion": "pinch_out",
+			"expression": "f03"
+		},
+		"disgust": {
+			"motion": "pinch_out",
+			"expression": "f02"
+		},
+		"fear": {
+			"motion": "pinch_in",
+			"expression": "f02"
+		},
+		"happiness": {
+			"motion": "tap_body",
+			"expression": "f04"
+		},
+		"sadness": {
+			"motion": "shake",
+			"expression": "f02"
+		},
+		"surprise": {
+			"motion": "pinch_in",
+			"expression": "f04"
+		}
+	}
+}

@@ -78,3 +78,15 @@ func GetKey() model.SetKeyRequest {
 
 	return keys
 }
+
+func ChangeLive2d(modelName string) {
+	if modelName == "shizuku" {
+		return
+	}
+
+	live2dModel = new(live2drive.SelfLoadModel)
+
+	modelConfig := live2drive.LoadModelConfig(modelName)
+	fmt.Printf("%+v\n", modelConfig)
+	live2dModel.SetEmotionDriver(modelConfig.EmotionDriver)
+}

@@ -11,7 +11,7 @@ type Live2Driver interface {
 }
 
 type SelfLoadModel struct {
-	EmotionDriver model.EmotionDriver
+	emotionDriver model.EmotionDriver
 	lastStatus    map[model.Emotion]int
 }
 
@@ -23,7 +23,7 @@ func (m *SelfLoadModel) GetDriverbyEmotion(emotion map[model.Emotion]int) model.
 		topEmo = topEmos[0]
 	}
 
-	driver := m.EmotionDriver[topEmo]
+	driver := m.emotionDriver[topEmo]
 
 	fmt.Println(emotion, topEmo)
 
@@ -36,5 +36,5 @@ func (m *SelfLoadModel) SetEmotionDriver(emotionDriver model.EmotionDriver) {
 		copyEotionDriver[emo] = driver
 	}
 
-	m.EmotionDriver = copyEotionDriver
+	m.emotionDriver = copyEotionDriver
 }

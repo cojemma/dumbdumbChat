@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+<link rel="stylesheet" href="/static/style.css">
+
+</head>
+<body>
+
+    <a class="btn" href="/">Home</a>
+    <div class="form-container">
+    <form onsubmit="sendLive2DSet(event)">
+        <div class="form-group">
+          <label>Model Name</label>
+          <select id="modelName">
+            <option value="https://cdn.jsdelivr.net/gh/guansss/pixi-live2d-display/test/assets/shizuku/shizuku.model.json">shizuku</option>
+            {{range $k, $v := .Live2dModelList}}
+                <option value="{{$v}}">{{$k}}</option>
+            {{end}}
+          </select>
+        </div>
+        
+        <div class="form-group">
+          <label>Anger</label>
+          <div>  
+            <label>Motion</label>   
+            <input type="text" id="emotionDriver.anger.motion" placeholder="Anger Motion">
+          </div>
+          <div>
+            <label>Expression</label>  
+            <input type="text" id="emotionDriver.anger.expression" placeholder="Anger Expression">
+          </div>
+        </div>
+        
+        <div class="form-group">
+          <label>Disgust</label>
+          <div>  
+            <label>Motion</label>   
+            <input type="text" id="emotionDriver.disgust.motion" placeholder="Disgust Motion">
+          </div>
+          <div>
+            <label>Expression</label>  
+            <input type="text" id="emotionDriver.disgust.expression" placeholder="Disgust Expression">
+          </div>
+        </div>
+        
+        <div class="form-group">  
+          <label>Fear</label>
+          <div>  
+            <label>Motion</label>   
+            <input type="text" id="emotionDriver.fear.motion" placeholder="Fear Motion">
+          </div>
+          <div>
+            <label>Expression</label>  
+            <input type="text" id="emotionDriver.fear.expression" placeholder="Fear Expression">
+          </div>
+        </div>
+        
+        <div class="form-group">
+          <label>Happiness</label>
+          <div>  
+            <label>Motion</label>   
+            <input type="text" id="emotionDriver.happiness.motion" placeholder="Happiness Motion">
+          </div>
+          <div>
+            <label>Expression</label>  
+            <input type="text" id="emotionDriver.happiness.expression" placeholder="Happiness Expression">
+          </div>
+        </div>
+        
+        <div class="form-group">
+          <label>Sadness</label>
+          <div>  
+            <label>Motion</label>   
+            <input type="text" id="emotionDriver.sadness.motion" placeholder="Sadness Motion">
+          </div>
+          <div>
+            <label>Expression</label>  
+            <input type="text" id="emotionDriver.sadness.expression" placeholder="Sadness Expression">
+          </div>
+        </div>  
+        
+        <div class="form-group">
+          <label>Surprise</label>
+          <div>  
+            <label>Motion</label>   
+            <input type="text" id="emotionDriver.surprise.motion" placeholder="Surprise Motion">
+          </div>
+          <div>
+            <label>Expression</label>  
+            <input type="text" id="emotionDriver.surprise.expression" placeholder="Surprise Expression">
+          </div>
+        </div>    
+        
+        <button type="submit">Submit</button>
+      </form>
+    </div>
+
+      <script>
+        function sendLive2DSet(e) {
+            e.preventDefault()
+            const select = document.querySelector('#modelName');
+            const selectedOption = select.selectedOptions[0];
+            const modelName = selectedOption.innerText;
+          
+          const formData = {
+            modelName: modelName,
+            emotionDriver: {
+              anger: {
+                motion: document.getElementById('emotionDriver.anger.motion').value, 
+                expression: document.getElementById('emotionDriver.anger.expression').value
+              },
+              disgust: {
+                motion: document.getElementById('emotionDriver.disgust.motion').value, 
+                expression: document.getElementById('emotionDriver.disgust.expression').value
+              },
+              fear: {
+                motion: document.getElementById('emotionDriver.fear.motion').value, 
+                expression: document.getElementById('emotionDriver.fear.expression').value
+              },
+              happiness: {
+                motion: document.getElementById('emotionDriver.happiness.motion').value, 
+                expression: document.getElementById('emotionDriver.happiness.expression').value
+              },
+              sadness: {
+                motion: document.getElementById('emotionDriver.sadness.motion').value, 
+                expression: document.getElementById('emotionDriver.sadness.expression').value
+              },
+              surprise: {
+                motion: document.getElementById('emotionDriver.surprise.motion').value, 
+                expression: document.getElementById('emotionDriver.surprise.expression').value
+              }
+            }
+          }
+          
+          fetch('/setLive2d', {
+            method: 'POST', 
+            headers: {
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(formData)
+          })
+          .then(res => {
+                if (res.status === 302) {
+                location.href = res.headers.get('Location'); 
+                }
+            })
+        }
+        </script>
+
+</body>
+</html>
