@@ -25,7 +25,7 @@ func TestListAllModel(t *testing.T) {
 }
 
 func TestSaveModelConfig(t *testing.T) {
-	live2dConfigFile = "./live2dConfig.json"
+	live2dModelFile = "."
 
 	type args struct {
 		config model.Live2dCharacterConfig
@@ -39,7 +39,7 @@ func TestSaveModelConfig(t *testing.T) {
 			name: "save model config",
 			args: args{
 				config: model.Live2dCharacterConfig{
-					ModelName:     "shizuku",
+					ModelName:     "",
 					EmotionDriver: shizukuDriver,
 				},
 			},

@@ -1,5 +1,5 @@
 {
-	"modelFile": "shizuku",
+	"modelName": "",
 	"emotionDriver": {
 		"anger": {
 			"motion": "pinch_out",

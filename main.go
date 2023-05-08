@@ -55,7 +55,7 @@ func setKey(w http.ResponseWriter, r *http.Request) {
 
 func handleSetLive2dRequest(w http.ResponseWriter, r *http.Request) {
 	if r.Method == "GET" {
-		tmpl, _ := template.ParseFiles("./static/setLive2D.html")
+		tmpl, _ := template.ParseFiles("./static/live2dConfig.html")
 		allModel := live2drive.ListAllModel()
 
 		htmlRenderer := model.HtmlRenderer{
@@ -104,7 +104,7 @@ func main() {
 
 	mux.HandleFunc("/ws", wsMessage.UpgradeConnection)
 	mux.HandleFunc("/setKey", setKey)
-	mux.HandleFunc("/setLive2d", handleSetLive2dRequest)
+	mux.HandleFunc("/live2dConfig", handleSetLive2dRequest)
 	mux.HandleFunc("/changeLive2d", changeLive2d)
 
 	// handler := cors.Default().Handler(mux)
