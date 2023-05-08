@@ -71,7 +71,7 @@
   float: left;
 }
 
-.setKey-container {
+.form-container {
   width: 500px;
   margin: 2rem auto;
   border: 1px solid #ddd;
@@ -100,4 +100,17 @@ button {
   padding: 1rem; 
   border: none;
   border-radius: 0.3rem;
+}
+
+.btn {
+  display: inline-block;
+  padding: 1rem;
+  background: #007bff;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 0.3rem; 
+}
+
+.btn:hover {
+  background: #0069d9; 
 }

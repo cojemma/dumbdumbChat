@@ -35,7 +35,7 @@ var shizukuDriver = model.EmotionDriver{
 }
 
 type Shizuku struct {
-	EmotionDriver model.EmotionDriver
+	emotionDriver model.EmotionDriver
 	lastStatus    map[model.Emotion]int
 }
 
@@ -58,5 +58,5 @@ func (char *Shizuku) GetDriverbyEmotion(emotion map[model.Emotion]int) model.Mod
 }
 
 func (char *Shizuku) SetEmotionDriver(emotionDriver model.EmotionDriver) {
-	char.EmotionDriver = emotionDriver
+	char.emotionDriver = shizukuDriver
 }

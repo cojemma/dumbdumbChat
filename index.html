@@ -37,7 +37,7 @@
   </div> 
 
 <div id="control">
-  <div class="setKey-container">
+  <div class="form-container">
     <h1>Set Key</h1>
     <form onsubmit="sendKeySet(event)">
         <div class="form-group">
@@ -59,12 +59,6 @@
         <button type="submit">Submit</button>
     </form>
   </div>
-  <!-- <form onsubmit="sendKeySet(event)">
-    <input type="text" id="chatKey">
-    <input type="text" id="ttsKey">
-    <input type="text" id="ttsRegion">
-    <button type="submit">Submit</button>
-  </form> -->
 
   <div id="motionControl">
     <p>motions</p>
@@ -85,12 +79,14 @@
   </div>
 
   <select id="selectModel">
+    <option value="https://cdn.jsdelivr.net/gh/guansss/pixi-live2d-display/test/assets/shizuku/shizuku.model.json">shizuku</option>
     {{range $k, $v := .Live2dModelList}}
         <option value="{{$v}}">{{$k}}</option>
     {{end}}
-    <option value="https://cdn.jsdelivr.net/gh/guansss/pixi-live2d-display/test/assets/shizuku/shizuku.model.json">shizuku</option>
   </select>
   <button onclick="changeModel()">changeModel</button>
+
+  <a class="btn" href="/setLive2d">Set Live2d Config</a> 
 </div>
 
   <script  src="/static/live2dModel.js"></script>

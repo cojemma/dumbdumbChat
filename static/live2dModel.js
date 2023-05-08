@@ -126,8 +126,22 @@ function setExpression(expr, level) {
 }
 
 function changeModel() {
+  const select = document.querySelector('#selectModel');
+  const selectedOption = select.selectedOptions[0];
+  const modelName = selectedOption.innerText;
   let modelResource = document.getElementById("selectModel").value;
   cubism2Model = modelResource;
+
+  fetch('/changeLive2d', {
+    method: 'POST', 
+    headers: {
+        'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({ 
+      modelName
+    })
+  })
+
   loadLive2d();
 }
 

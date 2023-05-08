@@ -1,0 +1,29 @@
+{
+	"modelName": "mao_pro",
+	"emotionDriver": {
+		"anger": {
+			"motion": "Idle",
+			"expression": "exp_02"
+		},
+		"disgust": {
+			"motion": "Idle",
+			"expression": "exp_03"
+		},
+		"fear": {
+			"motion": "Idle",
+			"expression": "exp_04"
+		},
+		"happiness": {
+			"motion": "",
+			"expression": "exp_05"
+		},
+		"sadness": {
+			"motion": "",
+			"expression": "exp_06"
+		},
+		"surprise": {
+			"motion": "",
+			"expression": "exp_07"
+		}
+	}
+}
