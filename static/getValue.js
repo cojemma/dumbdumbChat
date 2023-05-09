@@ -66,6 +66,12 @@ ws.onmessage = e => {
     }
 }
 
+const setKeyCheckBox = document.getElementById("setKeyShow");
+setKeyCheckBox.addEventListener("change", () => {
+    let controlBox = document.getElementById("setKey");
+    controlBox.hidden = !setKeyCheckBox.checked;
+});
+
 function sendKeySet(e) {
     e.preventDefault();  
 
@@ -87,6 +93,39 @@ function sendKeySet(e) {
     .then(res => {
         if (res.ok) {
             alert("Set key successed!")
+        } else {
+            alert("Error submitting data!");
+        }
+    });
+}
+
+const setTTSVoiceShowBox = document.getElementById("setTTSVoiceShow");
+setTTSVoiceShowBox.addEventListener("change", () => {
+    let controlBox = document.getElementById("setTTSVoice");
+    controlBox.hidden = !setTTSVoiceShowBox.checked;
+});
+
+function sendTTSSet(e) {
+    e.preventDefault();
+
+    const ttsLanguage = document.getElementById("ttsLanguage").value;
+    const ttsGender = document.getElementById("ttsGender").value;
+    const ttsVoiceName = document.getElementById("ttsVoiceName").value;
+
+    fetch('/setTTS', {
+        method: 'POST', 
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ 
+            ttsLanguage, 
+            ttsGender,
+            ttsVoiceName 
+        })
+    })
+    .then(res => {
+        if (res.ok) {
+            alert("Set TTS successed!")
         } else {
             alert("Error submitting data!");
         }

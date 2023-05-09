@@ -5,6 +5,7 @@ import (
 	chatcore "dumbdumbChat/chatCore"
 	live2drive "dumbdumbChat/live2Drive"
 	"dumbdumbChat/model"
+	"dumbdumbChat/tts"
 	"dumbdumbChat/wsMessage"
 	"encoding/json"
 	"fmt"
@@ -33,11 +34,13 @@ func serveHome(w http.ResponseWriter, r *http.Request) {
 			chatMessageHistory = append(chatMessageHistory, chat)
 		}
 	}
+	ttsConfig := tts.GetTTSVoice()
 
 	htmlRenderer := model.HtmlRenderer{
 		SetKey:          keyData,
 		Live2dModelList: allModel,
 		ChatHistory:     chatMessageHistory,
+		TTSConfig:       ttsConfig,
 	}
 	tmpl.Execute(w, htmlRenderer)
 }
@@ -51,6 +54,17 @@ func setKey(w http.ResponseWriter, r *http.Request) {
 	}
 
 	chatcore.SetKey(setKeyReq)
+}
+
+func setTTS(w http.ResponseWriter, r *http.Request) {
+	setTTSReq := model.TTSConfig{}
+	err := json.NewDecoder(r.Body).Decode(&setTTSReq)
+	if err != nil {
+		http.Error(w, err.Error(), http.StatusBadRequest)
+		return
+	}
+
+	tts.SetTTSVoice(setTTSReq)
 }
 
 func handleLive2dConfigRequest(w http.ResponseWriter, r *http.Request) {
@@ -102,6 +116,7 @@ func main() {
 
 	mux.HandleFunc("/ws", wsMessage.UpgradeConnection)
 	mux.HandleFunc("/setKey", setKey)
+	mux.HandleFunc("/setTTS", setTTS)
 	mux.HandleFunc("/live2dConfig", handleLive2dConfigRequest)
 	mux.HandleFunc("/changeLive2d", changeLive2d)
 

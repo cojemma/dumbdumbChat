@@ -102,7 +102,7 @@ function checkbox(name, onChange) {
 
   if (!checkbox) {
     const p = document.createElement("p");
-    p.innerHTML = `<input type="checkbox" id="${id}"> <label for="${id}">${name}</label>`;
+    p.innerHTML = `<input type="checkbox" id="${id}" class="checkbox"> <label for="${id}" class="checkboxLabel">${name}</label>`;
 
     document.getElementById("control").appendChild(p);
     checkbox = p.firstChild;

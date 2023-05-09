@@ -17,9 +17,16 @@ type SetKeyRequest struct {
 	TTSRegion string `json:"ttsRegion"`
 }
 
+type TTSConfig struct {
+	TTSLanguage  string `json:"ttsLanguage"`
+	TTSGender    string `json:"ttsGender"`
+	TTSVoiceName string `json:"ttsVoiceName"`
+}
+
 type HtmlRenderer struct {
 	SetKey          SetKeyRequest
 	Live2dModelList map[string]string
 	ChatHistory     []ChatMessage
 	EmotionDriver   EmotionDriver
+	TTSConfig       TTSConfig
 }

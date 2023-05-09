@@ -4,6 +4,7 @@
   left: 24px;
   color: #fff;
   font-size: 18px;
+  width: 500px;
 }
 
 #canvas {
@@ -113,4 +114,27 @@ button {
 
 .btn:hover {
   background: #0069d9; 
+}
+
+.checkbox {
+  width: 20px;
+  height: 20px;
+  border-radius: 3px;
+  border: 2px solid #555;
+}
+
+.checkboxLabel {
+  margin-left: 10px;
+  font-size: 16px;
+  font-weight: bold;
+  color: #fdfdfd;
+  margin: 5px auto;
+}
+
+.checkbox:checked + .checkboxLabel {
+  color: #2196f3; 
+}
+
+.checkbox:focus + .checkboxLabel {
+  color: #2196f3; 
 }

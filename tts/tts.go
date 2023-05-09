@@ -3,6 +3,7 @@ package tts
 import (
 	"bytes"
 	"dumbdumbChat/model"
+	"encoding/json"
 	"fmt"
 	"io"
 	"log"
@@ -10,18 +11,21 @@ import (
 	"os"
 )
 
-const (
-	outputMP3 = "./static/audio/output.mp3"
-)
-
 func init() {
 	os.Mkdir("./static/audio/", 0755)
 }
 
 var (
-	speechKey    = ""
-	speechRegion = ""
+	speechKey     = ""
+	speechRegion  = ""
+	outputMP3     = "./static/audio/output.mp3"
+	ttsConfigFile = "./tts/config.json"
+	ttsConfig     = model.TTSConfig{}
 )
+
+func init() {
+	ttsConfig = GetTTSVoice()
+}
 
 func SetKeyandRegion(key, region string) {
 	speechKey = key
@@ -43,10 +47,10 @@ func TexttoSpeech(text string, emo map[model.Emotion]int) string {
 	topeEmo := model.GetTopEmotion(emo, 1)
 
 	ttsReq := fmt.Sprintf(`<speak version='1.0' xml:lang='en-US'> 
-	<voice xml:lang='zh-CN' xml:gender='Female' name='zh-CN-XiaoxiaoNeural' style='%s'> 
+	<voice xml:lang='%s' xml:gender='%s' name='%s' style='%s'> 
 		%s
 	</voice> 
-</speak>`, xiaoXiaoEmoMap[topeEmo[0]], text)
+</speak>`, ttsConfig.TTSLanguage, ttsConfig.TTSGender, ttsConfig.TTSVoiceName, xiaoXiaoEmoMap[topeEmo[0]], text)
 
 	req, err := http.NewRequest("POST", url, bytes.NewBufferString(ttsReq))
 	if err != nil {
@@ -73,10 +77,27 @@ func TexttoSpeech(text string, emo map[model.Emotion]int) string {
 	defer mp3.Close()
 
 	mp3.Write(body)
-	// err = os.WriteFile(outputMP3, body, 0644)
-	// if err != nil {
-	// 	log.Fatal(err)
-	// }
 
 	return outputMP3
+}
+
+func SetTTSVoice(config model.TTSConfig) {
+	file, _ := os.Create(ttsConfigFile)
+	defer file.Close()
+
+	file.Seek(0, 0) // 將檔案指標移至開頭
+	encoder := json.NewEncoder(file)
+	encoder.SetIndent("", "\t")
+	encoder.Encode(config)
+}
+
+func GetTTSVoice() model.TTSConfig {
+	file, _ := os.Open(ttsConfigFile)
+	defer file.Close()
+
+	config := model.TTSConfig{}
+	decoder := json.NewDecoder(file)
+	decoder.Decode(&config)
+
+	return config
 }

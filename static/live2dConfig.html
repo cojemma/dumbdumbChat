@@ -142,7 +142,7 @@
             body: JSON.stringify(formData)
           })
           .then(res => {
-              if (res.status === 200) {
+              if (res.ok) {
                   window.location.href = "/";  
               }
             })
