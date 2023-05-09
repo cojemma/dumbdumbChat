@@ -6,6 +6,8 @@ import (
 )
 
 func TestTexttoSpeech(t *testing.T) {
+	outputMP3 = "./output.mp3"
+
 	type args struct {
 		text string
 		emo  map[model.Emotion]int

@@ -16,8 +16,8 @@ chatAI - chatGpt request, chat history saved
 live2Drive - use emotion struct to drive live2D model   
 tts - azure tts request.
 ## TODO
-1. 模型motion及expression接口開放
-2. tts聲音模型新增可選選項 
+1. ~~模型motion及expression接口開放~~
+2. ~~tts聲音模型新增可選選項~~
 3. 更便宜的文字生成模型服務,e.x. Claude    
 4. 更靈活的對話歷史及prompt編輯
 ## 聯絡資訊
