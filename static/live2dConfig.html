@@ -15,7 +15,6 @@
         <div class="form-group">
           <label>Model Name</label>
           <select id="modelName">
-            <option value="https://cdn.jsdelivr.net/gh/guansss/pixi-live2d-display/test/assets/shizuku/shizuku.model.json">shizuku</option>
             {{range $k, $v := .Live2dModelList}}
                 <option value="{{$v}}">{{$k}}</option>
             {{end}}
@@ -143,9 +142,9 @@
             body: JSON.stringify(formData)
           })
           .then(res => {
-                if (res.status === 302) {
-                location.href = res.headers.get('Location'); 
-                }
+              if (res.status === 200) {
+                  window.location.href = "/";  
+              }
             })
         }
         </script>

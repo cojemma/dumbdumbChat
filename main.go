@@ -53,7 +53,7 @@ func setKey(w http.ResponseWriter, r *http.Request) {
 	chatcore.SetKey(setKeyReq)
 }
 
-func handleSetLive2dRequest(w http.ResponseWriter, r *http.Request) {
+func handleLive2dConfigRequest(w http.ResponseWriter, r *http.Request) {
 	if r.Method == "GET" {
 		tmpl, _ := template.ParseFiles("./static/live2dConfig.html")
 		allModel := live2drive.ListAllModel()
@@ -73,8 +73,6 @@ func handleSetLive2dRequest(w http.ResponseWriter, r *http.Request) {
 	}
 	fmt.Printf("%+v\n", live2dConfig)
 	live2drive.SaveModelConfig(live2dConfig)
-
-	http.Redirect(w, r, "/", http.StatusFound)
 }
 
 func changeLive2d(w http.ResponseWriter, r *http.Request) {
@@ -104,7 +102,7 @@ func main() {
 
 	mux.HandleFunc("/ws", wsMessage.UpgradeConnection)
 	mux.HandleFunc("/setKey", setKey)
-	mux.HandleFunc("/live2dConfig", handleSetLive2dRequest)
+	mux.HandleFunc("/live2dConfig", handleLive2dConfigRequest)
 	mux.HandleFunc("/changeLive2d", changeLive2d)
 
 	// handler := cors.Default().Handler(mux)
