@@ -3,23 +3,23 @@
 	"emotionDriver": {
 		"anger": {
 			"motion": "Idle",
-			"expression": "exp_02"
+			"expression": "exp_08"
 		},
 		"disgust": {
-			"motion": "Idle",
-			"expression": "exp_03"
+			"motion": "",
+			"expression": "exp_07"
 		},
 		"fear": {
-			"motion": "Idle",
-			"expression": "exp_04"
+			"motion": "",
+			"expression": "exp_03"
 		},
 		"happiness": {
 			"motion": "",
-			"expression": "exp_05"
+			"expression": "exp_04"
 		},
 		"sadness": {
 			"motion": "",
-			"expression": "exp_06"
+			"expression": "exp_05"
 		},
 		"surprise": {
 			"motion": "",
