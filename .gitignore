@@ -2,3 +2,4 @@ vendor
 src
 *.mp3
 key.json
+static/live2d/*
