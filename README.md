@@ -11,6 +11,8 @@ AIVtuber需要以下的環境與API:
 2. 於網頁上填入OpenAI API Key以及Azure語音訂閱的相關資訊。  
 3. 即可開始與AIVtuber進行語音對話! 
 4. 如果要修改給ChatGPT的角色設定與對話，位於.chatAI/chathistory.json。
+5. 如果要新增live2d的話，將含有模型的model(model3).json檔案的資料夾放入./static/live2d的資料夾內。之後重啟執行檔便可以讀取模型選項。
+6. 可以於Set Live2d Config下設定live2d模型對應語句情緒所表現的Motion及Expression，輸入的動作需於live2d中已包含的動作。
 ## 檔案結構
 chatAI - chatGpt request, chat history saved   
 live2Drive - use emotion struct to drive live2D model   
